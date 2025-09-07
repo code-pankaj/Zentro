@@ -1,0 +1,44 @@
+# Zentro Backend
+
+It is a chat application built with nodejs, typescript, prisma, neondb
+
+# Future Updates 
+
+- Reset password route
+- Forgot password route
+- search by username route 
+- send request route
+- accept request route
+- friends routes
+
+### General Stuff
+
+- Used req.body to get input 
+- cors enabled
+- all routes by '/api'
+- using typescript, prisma, dotenv
+- Prisma client initialize
+
+### Prisma - 
+
+- Used to defined the schema of the neondb database
+- Using prisma client in the backend to query database
+
+### Routes - 
+
+- Signup
+- Login
+
+### Signup Flow - 
+
+- Retrive credentials from req.body
+- Check if user already exists or not 
+- Hash the password using bcrytp
+- Create new user and store the hashed password 
+
+### Login Flow -
+
+- Retrive login credentials from req.body
+- Check if user exists or not
+- Verify the password 
+
