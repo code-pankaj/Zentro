@@ -51,7 +51,8 @@ export const signup = async (req: Request, res: Response) => {
             return res.status(401).send(`Some error occured.`)
         }
         
-        console.log(newUser)
+        req.session.userId = newUser.id
+        
         return res.status(200).send(`Successfully created user with email : ${email}`)
     } catch (error) {
         return res.status(400).send(`Error encountered : ${error}`)

@@ -30,6 +30,10 @@ export const login = async (req: Request, res: Response) => {
         if(!passwordMatch){
             return res.status(401).send(`Wrong Password`)
         }
+
+        req.session.userId = userExist.id
+        console.log(req.session.userId)
+
         return res.status(200).send(`Welcome back, ${userExist.username}`)
         
     } catch (error) {
