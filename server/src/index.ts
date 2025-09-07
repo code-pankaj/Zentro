@@ -12,6 +12,7 @@ const app = express()
 
 const port = process.env.PORT
 
+// how this work in typescript?
 declare module "express-session"{
     interface SessionData {
         userId: string
@@ -21,11 +22,13 @@ declare module "express-session"{
 app.use(express.json())
 app.use(cors())
 
+// what is redisstore?
 const redisStore = new RedisStore({
     client: redisClient,
     prefix: "session:",
 })
 
+// how this is working??
 app.use(
     session({
         store: redisStore,

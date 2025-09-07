@@ -1,6 +1,6 @@
 # Zentro Backend
 
-It is a chat application built with nodejs, typescript, prisma, neondb
+It is a chat application built with nodejs, typescript, prisma, neondb, redis
 
 # Future Updates 
 
@@ -35,10 +35,17 @@ It is a chat application built with nodejs, typescript, prisma, neondb
 - Check if user already exists or not 
 - Hash the password using bcrytp
 - Create new user and store the hashed password 
+- Create a user session if not present
 
 ### Login Flow -
 
 - Retrive login credentials from req.body
 - Check if user exists or not
 - Verify the password 
+- Create a session for the user
 
+### Redis
+
+( still need to study many stuff )
+- Using redis for storing sessions
+- Using redis store 
