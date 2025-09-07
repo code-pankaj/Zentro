@@ -1,4 +1,9 @@
 import { type Request, type Response } from "express"
+import { PrismaClient } from "@prisma/client"
+import bcrypt from 'bcrypt'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 type credentials = {
     full_name: string,
@@ -6,6 +11,8 @@ type credentials = {
     email: string,
     password: string
 }
+
+const prisma = new PrismaClient()
 
 export const signup = async (req: Request, res: Response) => {
     const { full_name, username, email, password, } : credentials = req.body
@@ -15,7 +22,37 @@ export const signup = async (req: Request, res: Response) => {
     }
 
     try {
+        const usernameExist = await prisma.user.findUnique({
+            where: {
+                username: username
+            }
+        })
+        if(usernameExist){
+            return res.status(401).send(`Username already exists`)
+        }
+        const emailExist = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        })
+        if(emailExist){
+            return res.status(401).send(`Email already exists`)
+        }
+        const hashedPassword = await bcrypt.hash(password, 10)
+        const newUser = await prisma.user.create({
+            data: {
+                fullName: full_name,
+                username: username,
+                email: email,
+                passwordHash: hashedPassword
+            }
+        })
+        if(!newUser){
+            return res.status(401).send(`Some error occured.`)
+        }
         
+        console.log(newUser)
+        return res.status(200).send(`Successfully created user with email : ${email}`)
     } catch (error) {
         return res.status(400).send(`Error encountered : ${error}`)
     }
