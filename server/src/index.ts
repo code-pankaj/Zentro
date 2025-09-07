@@ -4,7 +4,7 @@ import cors from 'cors'
 import router from "./routes/routes.ts";
 import session from 'express-session'
 import { RedisStore } from "connect-redis";
-import { redisClient } from "./redis/redis.ts";
+import { redisClient } from "./db/redis.ts";
 
 dotenv.config()
 

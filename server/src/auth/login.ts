@@ -1,8 +1,6 @@
 import { type Request, type Response } from 'express'
-import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
-
-const prisma = new PrismaClient()
+import { prisma } from '../db/prismaClient.ts'
 
 type credentials = {
     email: string,
@@ -37,6 +35,6 @@ export const login = async (req: Request, res: Response) => {
         return res.status(200).send(`Welcome back, ${userExist.username}`)
         
     } catch (error) {
-        res.status(400).send(`Error encountered : ${error}`)
+        res.status(500).send(`Error encountered : ${error}`)
     }
 }
