@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express'
 import bcrypt from 'bcrypt'
-import { prisma } from '../db/prismaClient.ts'
+import { prisma } from '../../db/prismaClient.ts'
 
 type credentials = {
     email: string,

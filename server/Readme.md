@@ -4,8 +4,6 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 
 # Future Updates 
 
-- Reset password route
-- Forgot password route
 - search by username route 
 - send request route
 - accept request route

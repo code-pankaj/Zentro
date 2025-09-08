@@ -1,7 +1,7 @@
 import { type Request, type Response } from "express"
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
-import { prisma } from "../db/prismaClient.ts"
+import { prisma } from "../../db/prismaClient.ts"
 
 dotenv.config()
 

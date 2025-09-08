@@ -1,9 +1,7 @@
 import { type Request, type Response } from 'express'
-import { prisma } from '../db/prismaClient.ts'
+import { prisma } from '../../db/prismaClient.ts'
 import bcrypt from 'bcrypt'
-import dotenv from 'dotenv'
-
-dotenv.config()
+import { ENV } from '../../config/env.ts'
 
 type credentials = {
     oldPassword: string,
@@ -34,7 +32,7 @@ const resetPass = async (req: Request, res: Response) => {
             return res.status(403).send(`Current password is wrong`)
         }
 
-        const hashedPassword = await bcrypt.hash(newPassword, Number(process.env.SALT_ROUNDS))
+        const hashedPassword = await bcrypt.hash(newPassword, Number(ENV.SALT_ROUNDS))
 
         await prisma.user.update({
             where: {
