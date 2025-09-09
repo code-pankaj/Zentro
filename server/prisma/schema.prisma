@@ -29,10 +29,26 @@ model User {
   // Messages Relation
   sentMessages Message[] @relation("sentMessages")
   receivedMessages Message[] @relation("receivedMessages")
+
+  // Friends
+  UserFriends Friend[] @relation("UserFriends")
+  UserFriendOf Friend[] @relation("UserFriendOf")
+}
+
+model Friend {
+  id        String   @id @default(uuid()) @unique
+  userId    String
+  friendId  String
+  createdAt DateTime @default(now())
+
+  user   User @relation("UserFriends", fields: [userId], references: [id])
+  friend User @relation("UserFriendOf", fields: [friendId], references: [id])
+
+  @@unique([userId, friendId]) // Prevent duplicate friendships
 }
 
 model FriendRequest {
-  id String @id @default(uuid())
+  id String @id @default(uuid()) @unique
   fromId String
   toId String
   status RequestStatus @default(PENDING)
@@ -50,7 +66,7 @@ enum RequestStatus {
 }
 
 model Message {
-  id String @id @default(uuid())
+  id String @id @default(uuid()) @unique
   senderId String
   receiverId String
   content String
