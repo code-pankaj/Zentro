@@ -5,7 +5,6 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 # Future Updates 
 
 - search by username route 
-- accept request route
 - friends routes
 
 ### General Stuff
@@ -27,6 +26,7 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 - Login
 - Reset Pass
 - Send Friend Request
+- Accept friend request
 
 ### Signup Flow - 
 

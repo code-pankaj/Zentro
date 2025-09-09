@@ -1,14 +1,16 @@
 import { type Request, type Response } from 'express'
 import { prisma } from '../../db/prismaClient.ts'
 
+type requestFormat = {
+    requestId: string
+}
+
 export const acceptRequest = async (req: Request, res: Response) => {
-    const { requestId } = req.body
+    const { requestId } : requestFormat = req.body
 
     if (!requestId) {
         return res.status(401).send(`Specify who to send request.`)
     }
-
-
 
     try {
 
