@@ -4,8 +4,6 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 
 # Future Updates 
 
-- friends routes
-
 ### General Stuff
 
 - Used req.body to get input 
@@ -27,6 +25,7 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 - Send Friend Request
 - Accept friend request
 - Search by Username
+- Get Friend List
 
 ### Signup Flow - 
 
