@@ -4,6 +4,10 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 
 # Future Updates 
 
+- Chats Route
+- Chat Id's for user talking to each other
+- Create socket.io client
+
 ### General Stuff
 
 - Used req.body to get input 
