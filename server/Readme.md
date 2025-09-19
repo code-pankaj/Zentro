@@ -5,6 +5,7 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 # Future Updates 
 
 - Understand the schema
+- Don't pass message first to db, emit it to user for real time comms
 
 ### General Stuff
 
