@@ -5,7 +5,6 @@ It is a chat application built with nodejs, typescript, prisma, neondb, redis
 # Future Updates 
 
 - Understand the schema
-- Create socket.io client
 
 ### General Stuff
 
