@@ -1,11 +1,12 @@
 import { type Request, type Response } from "express";
 import { prisma } from "../../db/prismaClient.ts";
+import { getIO } from "../../socket.ts";
 
-type chatId = {
+type chatIdParam = {
     chatId: string
 }
 
-export const sendMessage = async (req: Request<chatId>, res: Response) => {
+export const sendMessage = async (req: Request<chatIdParam>, res: Response) => {
     const { chatId } = req.params
     const { content } = req.body
 
@@ -39,5 +40,8 @@ export const sendMessage = async (req: Request<chatId>, res: Response) => {
             }
         }
     })
+
+    getIO().to(chatId).emit("new_message", message)
+    
     return res.status(200).send(message)
 }

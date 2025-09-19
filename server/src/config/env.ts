@@ -15,5 +15,6 @@ export const ENV = {
     REDIS_HOST: process.env.REDIS_HOST,
     REDIS_PORT: process.env.REDIS_PORT,
     SALT_ROUNDS: process.env.SALT_ROUNDS,
-    DATABASE_URL: process.env.DATABASE_URL
+    DATABASE_URL: process.env.DATABASE_URL,
+    CLIENT_URL: process.env.CLIENT_URL
 }
